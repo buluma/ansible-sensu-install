@@ -1,0 +1,9 @@
+- name: be sure sensu.repo is copied
+  copy:
+    src: sensu.repo
+    dest: /etc/yum.repos.d/sensu.repo
+
+- name: be sure sensu is installed
+  yum:
+    name: sensu
+    state: latest
