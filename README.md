@@ -25,8 +25,7 @@ Example Playbook
 
     - hosts: servers
       roles:
-         - { role: 030.sensu-install, version: 0.1.1 }
-
+         - { role: buluma.sensu-install, version: 0.1.1 }
 License
 -------
 
@@ -34,5 +33,4 @@ MIT
 
 Author Information
 ------------------
-
-http://stackexchange.com/users/3302040/030
+ShadowWalker
