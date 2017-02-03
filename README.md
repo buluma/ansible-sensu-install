@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/030/ansible-sensu-install.svg?branch=master)](https://travis-ci.org/030/ansible-sensu-install)
+[![Build Status](https://travis-ci.org/buluma/ansible-sensu-install.svg?branch=master)](https://travis-ci.org/buluma/ansible-sensu-install)
 
 ansible-sensu-install
 =========
