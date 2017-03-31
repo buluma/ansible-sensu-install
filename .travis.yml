@@ -19,6 +19,7 @@ services:
   - docker
 
 before_install:
+  - openssl aes-256-cbc -K $encrypted_dfb988c4dc1a_key -iv $encrypted_dfb988c4dc1a_iv -in README.txt.enc -out README.txt -d
   # Downgrade to older version of Docker engine.
   - sudo apt-get update
   - sudo apt-get remove docker-engine -yq
@@ -53,14 +54,14 @@ script:
     || (echo 'Idempotence test: fail' && exit 1)
 
   # Ensure services are running by checking the ports.
-  #- 'sudo docker exec --tty "$(cat ${container_id})" env TERM=xterm cat /etc/sensu/conf.d/rabbitmq.json'
-  
+  - 'sudo docker exec --tty "$(cat ${container_id})" env TERM=xterm cat /etc/sensu/conf.d/rabbitmq.json'
+
   # Clean up
   - 'sudo docker stop "$(cat ${container_id})"'
 
 after_failure:
   #placeholder Check MySQL settings.
-  #- 'sudo docker exec --tty "$(cat ${container_id})" env TERM=xterm cat /var/log/mysql/error.log'
+  - 'sudo docker exec --tty "$(cat ${container_id})" env TERM=xterm cat /var/log/mysql/error.log'
 
 #notifications:
 #  webhooks: https://galaxy.ansible.com/api/v1/notifications/
