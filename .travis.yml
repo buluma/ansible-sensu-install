@@ -54,7 +54,7 @@ script:
     || (echo 'Idempotence test: fail' && exit 1)
 
   # Ensure services are running by checking the ports.
-  - 'sudo docker exec --tty "$(cat ${container_id})" env TERM=xterm cat /etc/sensu/conf.d/rabbitmq.json'
+  #- 'sudo docker exec --tty "$(cat ${container_id})" env TERM=xterm cat /etc/sensu/conf.d/rabbitmq.json'
 
   # Clean up
   - 'sudo docker stop "$(cat ${container_id})"'
