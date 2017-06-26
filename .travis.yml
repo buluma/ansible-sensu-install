@@ -1,11 +1,12 @@
 ---
-#sudo: required
+sudo: required
 group: deprecated-2017Q2
 
 env:
   global:
     # https://github.com/travis-ci/travis-ci/issues/6461#issuecomment-239577306
 #    DOCKER_VERSION: "1.9.1-0~trusty"
+     DOCKER_COMPOSE_VERSION=1.4.2
   matrix:
     - distro: centos7
       init: /usr/lib/systemd/systemd
