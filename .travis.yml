@@ -1,12 +1,10 @@
 ---
 sudo: required
-group: deprecated-2017Q2
 
 env:
   global:
     # https://github.com/travis-ci/travis-ci/issues/6461#issuecomment-239577306
-#    DOCKER_VERSION: "1.9.1-0~trusty"
-     DOCKER_COMPOSE_VERSION=1.4.2
+    DOCKER_VERSION: "1.9.1-0~trusty"
   matrix:
     - distro: centos7
       init: /usr/lib/systemd/systemd
@@ -21,7 +19,6 @@ services:
   - docker
 
 before_install:
-  - openssl aes-256-cbc -K $encrypted_dfb988c4dc1a_key -iv $encrypted_dfb988c4dc1a_iv -in README.txt.enc -out README.txt -d
   # Downgrade to older version of Docker engine.
   - sudo apt-get update
   - sudo apt-get remove docker-engine -yq
@@ -57,13 +54,13 @@ script:
 
   # Ensure services are running by checking the ports.
   #- 'sudo docker exec --tty "$(cat ${container_id})" env TERM=xterm cat /etc/sensu/conf.d/rabbitmq.json'
-
+  
   # Clean up
   - 'sudo docker stop "$(cat ${container_id})"'
 
 after_failure:
   #placeholder Check MySQL settings.
-  - 'sudo docker exec --tty "$(cat ${container_id})" env TERM=xterm cat /var/log/mysql/error.log'
+  #- 'sudo docker exec --tty "$(cat ${container_id})" env TERM=xterm cat /var/log/mysql/error.log'
 
 #notifications:
 #  webhooks: https://galaxy.ansible.com/api/v1/notifications/
