@@ -72,7 +72,6 @@ notifications:
     on_success: always
     on_failure: always
     rooms:
-      - buluma:QWpyLHvuvJe5aduZtGs7euUa#general
       - buluma:QWpyLHvuvJe5aduZtGs7euUa#travis-ci
   email:
     recipients:
