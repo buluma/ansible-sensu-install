@@ -24,12 +24,12 @@ before_install:
   # - sudo apt-get remove docker-engine -yq
   # - sudo apt-get install docker-engine=$DOCKER_VERSION -yq --no-install-suggests --no-install-recommends --force-yes -o Dpkg::Options::="--force-confnew"
   # Pull container
-  - 'sudo docker pull geerlingguy/docker-${distro}-ansible:latest'
+  - 'sudo docker pull buluma/docker-${distro}-ansible:latest'
 
 script:
   - container_id=$(mktemp)
   # Run container in detached state
-  - 'sudo docker run --detach --volume="${PWD}":/etc/ansible/roles/role_under_test:ro ${run_opts} geerlingguy/docker-${distro}-ansible:latest "${init}" > "${container_id}"'
+  - 'sudo docker run --detach --volume="${PWD}":/etc/ansible/roles/role_under_test:ro ${run_opts} buluma/docker-${distro}-ansible:latest "${init}" > "${container_id}"'
 
   # Install dependencies.
   - 'sudo docker exec --tty "$(cat ${container_id})" env TERM=xterm ansible --version'
