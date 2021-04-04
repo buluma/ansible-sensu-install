@@ -1,13 +1,15 @@
-# - name: be sure sensu apt repository key is deployed
-#   apt_key:
+- name: be sure sensu apt repository key is deployed
+  apt_key:
 #     url: http://sensu.global.ssl.fastly.net/apt/pubkey.gpg EOL
 #     url: https://eol-repositories.sensuapp.org/apt/pubkey.gpg
+      url: https://packagecloud.io/sensu/stable/gpgkey
 
-# - name: be sure sensu apt repository is deployed
-#   apt_repository:
+- name: be sure sensu apt repository is deployed
+  apt_repository:
 #     repo: deb http://sensu.global.ssl.fastly.net/apt sensu main EOL
 #     repo: deb https://eol-repositories.sensuapp.org/apt {{ ansible_distribution_release }} main
-#     update_cache: yes
+      repo: deb https://packagecloud.io/sensu/stable/{{ ansible_distribution | lower }}/ {{ ansible_distribution_release | lower }} main
+    update_cache: yes
 
 - name: be sure sensu is installed
   apt:
