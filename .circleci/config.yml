@@ -93,5 +93,5 @@ workflows:
           galaxy-requirements-file: tests/requirements.yml
           inventory: ANSIBLE_INVENTORY
           inventory-parameters:
-          playbook: install.yml
+          playbook: tests/test.yml
           private-key: ANSIBLE_SSH_KEY
